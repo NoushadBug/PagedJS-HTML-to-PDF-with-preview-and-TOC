@@ -67,7 +67,6 @@ function printPreview() {
   if (inputPrint.checked) {
     document.getElementById("button-print").disabled = false;
   } else {
-    document.getElementById("style-screen").remove();
 
     let bookcontent = document.querySelector("#content");
     let content = bookcontent.innerHTML;
@@ -114,7 +113,7 @@ function printPdf() {
   if (inputPrint.checked) {
     window.print();
   } else {
-    document.getElementById("style-screen").remove();
+    document.querySelector("#toc").innerHTML='';
     let bookcontent = document.querySelector("#content");
     let content = bookcontent.innerHTML;
     bookcontent.innerHTML = "";
