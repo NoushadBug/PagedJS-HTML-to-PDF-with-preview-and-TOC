@@ -1,0 +1,233 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+header {
+    height: 1in;
+    box-sizing: border-box;
+    padding: 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 16px;
+    margin: 0;
+    line-height: 1in;
+    /* Vertically center text */
+}
+
+footer {
+    height: 1in;
+    box-sizing: border-box;
+    padding: 0;
+    text-align: center;
+}
+
+.page {
+    width: 8.5in;
+    margin: 20px auto;
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Removed page-break-after and adjusted break-inside */
+    break-inside: auto;
+    /* Allow content to break naturally within .page */
+}
+
+.page-content {
+    box-sizing: border-box;
+    padding: 0.5in;
+    overflow: visible;
+}
+
+h1,
+h2,
+h3 {
+    color: #004085;
+}
+#list-toc-generated li {
+    display: flex;
+    justify-content: space-between;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    margin-bottom: 8px;
+    align-items: center; /* Align title and page number vertically */
+}
+
+/* Styling the title and page number */
+.toc-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 10px;
+    flex-grow: 1;
+    position: relative;
+    margin-right: 10px;
+    font-weight: normal;
+}
+
+.page-number {
+    font-weight: normal;
+    color: #23569a;
+    white-space: nowrap;
+}
+
+/* Adding border line between title and page number */
+.toc-title::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0.2em;
+    border-bottom: 0.51px solid #0000004a; /* Dotted line or use solid if preferred */
+    z-index: -1;
+}
+
+.table-of-contents {
+    break-after: page; /* Ensures the next content starts on a new page */
+    break-inside: avoid; /* Prevents the TOC from being split across pages */
+    page-break-inside: avoid; /* Older compatibility for avoiding page breaks inside */
+}
+
+/* Table of Contents Styles */
+.table-of-contents h2 {
+    margin-top: 0;
+}
+
+.table-of-contents ul {
+    list-style: none;
+    padding: 0;
+}
+
+.table-of-contents li {
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.toc-page-number {
+    margin-left: auto;
+}
+
+/* Buttons */
+.view-print-button,
+.print-button,
+.convert-button {
+    background-color: #28a745;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    display: inline-block;
+    margin: 10px;
+}
+
+.view-print-button:hover,
+.print-button:hover,
+.convert-button:hover {
+    background-color: #218838;
+}
+
+/* Original Sections */
+.page-break {
+    padding: 20px;
+    page-break-inside: avoid;
+    /* Encourage keeping the contents of the section together but allow breaks if necessary */
+    break-inside: avoid-column;
+    /* Similar to above, for columnar layouts */
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    /* Removed page-break-inside properties to allow tables to break across pages */
+}
+
+thead {
+    display: table-header-group;
+    /* Repeat table header on new pages */
+}
+
+tr {
+    /* Removed page-break-inside to allow rows to break if necessary */
+}
+
+table,
+th,
+td {
+    border: 1px solid #dee2e6;
+}
+
+/* Removed break-inside and page-break-inside from table, figure, img to allow natural breaks */
+th,
+td {
+    padding: 5px;
+    text-align: left;
+    font-size: 0.9em;
+}
+
+th {
+    background-color: #e9ecef;
+}
+
+/* Screen Styles */
+@media screen {
+    body {
+        background-color: #f0f0f0;
+    }
+
+    .page {
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .print-view-only {
+        display: none;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .page-break {
+        page-break-before: auto;
+        /* Change from 'always' to 'auto' */
+    }
+
+    .button-container {
+        display: none;
+    }
+
+    body {
+        background-color: #fff;
+        margin: 0;
+        padding: 0;
+    }
+
+    #content-container {
+        display: none;
+    }
+
+    #print-container {
+        display: block;
+    }
+
+    .page {
+        margin: 0;
+        border: none;
+        box-shadow: none;
+        break-inside: avoid;
+        /* Encourage the printer to avoid breaking inside .page elements */
+    }
+
+    .print-view-only {
+        display: block;
+    }
+}
